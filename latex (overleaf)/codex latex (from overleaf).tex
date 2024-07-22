@@ -1,0 +1,596 @@
+\documentclass[10pt]{beamer}
+
+\mode<presentation> {
+\usetheme{Berlin}
+}
+\usecolortheme{whale}
+%%%%couleur crane
+
+
+
+
+\usepackage{colortbl}
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage{pifont}
+
+\usepackage{multirow}
+\setbeamertemplate{caption}[numbered]
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb}
+\usepackage{array}
+\usepackage[french]{babel}
+\usepackage{multirow}
+\setbeamercovered{transparent=0}
+
+\usepackage{pifont}
+\setbeamertemplate{itemize item}{\color{astral} $\clubsuit$}
+
+\usepackage{tabularx}
+
+
+
+
+\newcommand\justify{%
+  \let\\\@centercr
+  \rightskip\z@skip
+  \leftskip\z@skip}
+\makeatother
+\newcommand{\titresection}{
+	\begin{frame}
+		\centering 
+		{\huge \textbf{\insertsectionhead}}
+	\end{frame}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title[\rmfamily{\textbf{Déterminants des performances d'une équipe de basketball et prévision de l'issue des matchs }}]{\rmfamily{Déterminants des performances d'une équipe de basketball et prévision de l'issue des matchs ; cas de la NBA}}
+\author[\rmfamily{Elimane Yassine SEÏDOU}]{\rmfamily{\textbf{Elimane Yassine SEIDOU}}}
+\date{\rmfamily{Session de Juillet 2022}}
+\institute[\rmfamily{ENEAM}]{\rmfamily{\textbf{Université d’Abomey-Calavi}
+	\vskip 0.5cm	
+\centering
+École Nationale d'Économie Appliquée et\\ 
+\vspace*{0.1cm}
+de Management}}
+
+\definecolor{astral}{RGB}{46,116,181}
+\begin{document}
+ \setbeamertemplate{background canvas}[default]
+\begin{frame}
+%	\transcover
+	\titlepage
+	\vspace*{-2.8cm}
+	\begin{minipage}[c]{.36\linewidth}
+		\begin{center}
+	\includegraphics[scale=0.04]{UAC}
+		\end{center}
+	\end{minipage} \hfill
+	\begin{minipage}[c]{.36\linewidth}
+		\begin{center}
+		\includegraphics[scale=0.20]{ine2.png} 
+		\end{center}
+	\end{minipage}
+\vspace*{0.8cm}
+\begin{center}
+\rmfamily{Directeur de mémoire}: \\
+\vspace*{0.2cm}
+\textbf{\rmfamily{Dr M. Nicodème ATCHADE}}\\
+\vspace*{0.1cm}
+\rmfamily{Maître Assistant CAMES}
+\end{center}
+\end{frame}
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{\textbf{\rmfamily{PLAN}}}
+%\transdissolve
+%\transboxin
+\tableofcontents
+\end{frame}
+
+
+\setbeamertemplate{itemize item}{\color{blue} $\clubsuit$}
+\section{\rmfamily{Problématique}}
+%\transdissolve
+%\transboxin
+\begin{frame}{\rmfamily{Problématique(1/2)}}
+\begin{block}{}
+\begin{itemize}
+\item{\rmfamily{L’industrie des sports est l’une des plus répandues dans le monde et en Afrique. Ils sont souvent marqués par des championnats ou des tournois. Aussi divertissant que soient les sports , les professionnels du domaine fournissent d’énormes efforts afin d’optimiser leurs prestations sportives et de remporter la victoire lors des compétitions;}}
+\item {\rmfamily{Le \textcolor{RED}{(basketball)} , l’un des sports les plus pratiqués au monde ne fait pas exception à la règle. Face aux différents enjeux sportifs et économiques, les dirigeants d’associations de basketball comme la \textcolor{RED}{(NBA)} ou la FIBA, les détenteurs de franchises et les coachs, ont dû mettre en place des stratégies permettant d’optimiser ce sport, d’améliorer les performances d’une
+équipe, d’attirer de plus en plus de supporters;}}
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\transdissolve
+%\transboxin
+\begin{frame}{\rmfamily{Problématique(2/2)}}
+\begin{block}{}
+\begin{itemize}
+\item {\rmfamily{Dans le but d’optimiser les prestations sportives, des prévisions , purement basées sur les chiffres ont été effectuée afin d'ajuster les stratégies des coachs.}}
+\item {\rmfamily{ Dans le cadre du développement du basket ball béninois la NBA et le Bénin se sont engagés dans une collaboration. Malheureusement, le basket ball béninois connaît un déficit en terme de simulations chiffrée de matchs, ce qui est un réel retard au vue des techniques utilisées sur la scène internationale}}
+\end{itemize}
+\end{block}
+\begin{block}{}
+\rmfamily{\textbf{Quelles sont les performances d’une équipe sportive de basketball et comment prévoir l’issue des matchs de la NBA?}}
+\end{block}
+\end{frame}
+
+
+
+
+\section{\rmfamily{Objectifs et hypothèses}}
+\begin{frame}{\rmfamily{Objectifs}}
+\begin{block}
+
+\rmfamily{L’objectif général de l’étude est d’identifier les déterminants des performances sportives d’une équipe sportive de basket ball et de prévoir l’issue des matchs.}
+
+\end{block}
+
+\begin{minipage}{.46\linewidth}
+	\begin{block}{\rmfamily{Objectif \no 1}}
+\rmfamily{Déterminer les facteurs qui expliquent le niveau de performance d’une équipe sur 72 matchs.}
+	\end{block}
+\end{minipage}\hfill
+\hspace{0.5cm}
+\begin{minipage}{.46\linewidth}
+	\begin{block}{\rmfamily{Objectif \no 2}}
+\rmfamily{Déterminer les facteurs qui influencent l’issue d’un match à partir de l’écart des points collectés
+pendant des matchs entre deux équipes et prévoir l’issue des matchs.}
+	\end{block}
+\end{minipage}
+
+\vspace*{0.2cm}
+		
+\end{frame}
+
+
+
+\begin{frame}{\rmfamily{Hypothèses}}
+
+\begin{minipage}{.46\linewidth}
+	\begin{block}{\rmfamily{Hypothèse \no 1}}
+\rmfamilyles {La performances du coach, l’âge moyen des joueurs et le pourcentage de tirs accordés expliquent la performance d’une équipe sur 72 matchs.}
+	\end{block}
+\end{minipage}\hfill
+\hspace{0.5cm}
+\begin{minipage}{.46\linewidth}
+	\begin{block}{\rmfamily{Hypothèse \no 2}}
+\rmfamily{Le pourcentage de 3 points accordés, de lancés francs et le nombre de rebonds défensifs influencent l’issue d’un matchs.\newline
+}
+	\end{block}
+\end{minipage}
+
+\vspace*{0.2cm}
+		
+\end{frame}
+
+
+
+\section{\rmfamily{Méthodologie}}
+\begin{frame}{\rmfamily{Méthodologie (1/6)}}
+\begin{block}{\rmfamily{Données}}
+\rmfamily{Cette étude se fonde sur les données relatives aux statistiques des 30 équipes , collectées pendant les matchs de la saison NBA 2020-2021. Les données ont été collectées sur le site officiel de la NBA :  https://www.nba.com}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{\rmfamily{Méthodologie (2/6)}}
+\begin{columns}
+\begin{column}{1\textwidth} 	
+		\vspace*{-0.5cm}
+		\begin{center}
+		\textbf{\rmfamily{* Liste des variables}}
+		\end{center}
+		\rmfamily{La variable dépendante est  "Performance de l'équipe".}
+	\vspace*{-0.5cm}
+	
+		
+		\begin{center} 
+			\renewcommand{\arraystretch}{1.2}
+			\footnotesize
+			\begin{tabular}{||l||l||}
+				\hline \hline
+		\textbf{Variables}	&\textbf{Libellés}  \\
+				\hline \hline
+	Performance de l'équipe (PE) & Nombre de victoire sur nombre total de matchs \\ 
+        PMFP &  Points moyens du Franchise Player \\ 
+        Performance à domicile (PAD) &  Nbre de victoire sur nbre de \\ & matchs joués à domicile \\ 
+       PDC & Performance du coach \\ 
+       SC & Salary Cap \\ 
+        Age & Age moyen des joueurs de l'équipe \\ 
+        FGP & Pourcentage de tirs réussis \\ 
+        3PP & Pourcentage de trois points réussis \\ 
+        FTP & Pourcentage de lancers francs réussis \\ 
+        DRB & Nombre moyen de rebonds défensifs \\
+        STL & Nombre moyen de vole balles\\
+
+				\hline \hline
+				
+			\end{tabular} 
+		\end{center}
+\color{black}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{\rmfamily{Méthodologie (3/6)}}
+\begin{columns}
+\begin{column}{1\textwidth} 	
+		\rmfamily{La variable dépendante est  "l'issue du match".}
+	\vspace*{-0.5cm}
+	
+		\begin{center}
+		$$
+		ISSUE = \left\{                 
+		\begin{array}{ll}
+		1 & \mbox{si l'équipe A gagne}  \\
+		0 & \mbox{sinon}
+		\end{array}
+		\right.
+		$$
+	\end{center} 
+	
+		
+		\begin{center} 
+			\renewcommand{\arraystretch}{1.2}
+			\footnotesize
+			\begin{tabular}{||l||l||}
+				\hline \hline
+		\textbf{Variables}	&\textbf{Libellés}  \\
+				\hline \hline
+	DFGA & Différence (équipe A - équipe B) des tentatives de tirs \\ 
+        D3PP &  Différence du pourcentage de trois points \\ 
+        DFTP &  Différence du pourcentage de lancés francs \\ 
+        DFGP & Différence du Pourcentage de tirs réussis \\ 
+        DORB & Différence du nombre de rebonds offensifs \\ 
+        DDRB & Différence du nombre de rebonds déffensifs \\ 
+        DAST & Différence du nombre de passes décisives \\
+        DSTL & Différence du nombre de vole de balle\\
+        DTOV & Différence du nombre de contre attaques\\
+
+				\hline \hline
+				
+			\end{tabular} 
+		\end{center}
+\color{black}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+
+\begin{frame}{\rmfamily{Méthodologie (4/6)}}
+\begin{block}{\rmfamily{Analyse descriptive univariée}}
+\rmfamily{L’analyse univariée permet de dresser un portrait de la population étudiée à partir de sa répartition suivant la variable d’intérêt de l’étude et les principales variables explicatives retenues.}
+\end{block}
+
+\vspace*{0.01cm}
+\begin{block}{\rmfamily{Analyse descriptive bivariée}}
+\rmfamily{L’analyse bivariée a pour but d’identifier les liaisons entre la variable performance de l'équipe et les différentes variables explicatives et d’apprécier la significativité statistique de ces liaisons.}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{\rmfamily{Méthodologie (5/6)}}
+\begin{block}{\rmfamily{Le modèle}}
+\rmfamily{ Le modèle de l'étude relative aux déterminants des performances sportives d'une équipe de basketball, nous avons donc : }
+\begin{equation}
+    \widehat {PE} = \beta_{0} + \beta_{1}x_{1} + \beta_{2}x_{2}+...+\beta_{n}x_{n}
+\end{equation}
+\end{block}
+
+\begin{minipage}{.46\linewidth}
+	\begin{block}{\rmfamily{Choix du modèle RLM}}
+\rmfamily{} 
+\begin{itemize}
+\item \rmfamily{- utiliser les variables liées à la variable d’intérêt à partir de la matrice de corrélation;}
+\item \rmfamily{- choisir le meilleur modèle en comparant les critères AIC.}
+\end{itemize}
+	\end{block}
+\end{minipage}\hfill
+\hspace{0.5cm}
+\begin{minipage}{.46\linewidth}
+	\begin{block}{Choix du modèle logit}
+\begin{itemize}
+\item \rmfamily{- utiliser les variables liées à la variable d’intérêt à partir du test de Khi-deux;}
+\item \rmfamily{- choisir le meilleur modèle en comparant les critères AIC.}
+\end{itemize}
+	\end{block}
+\end{minipage}
+
+\vspace*{0.2cm}
+\end{frame}
+
+
+\begin{frame}{\rmfamily{Méthodologie (6/6)}}
+\begin{minipage}{.46\linewidth}
+\begin{block}{\rmfamily{Pertinence du modèle}}
+	\begin{itemize}
+		\item \rmfamily{la règle de pouce;}
+		
+		\item \rmfamily{le test de Hosmer-Lemeshow;}
+		
+		\item \rmfamily{le test des résidus de la déviance;}
+		
+		\item \rmfamily{le test des résidus de Pearson.}
+		
+	\end{itemize}
+\end{block}
+\end{minipage}\hfill
+\begin{minipage}{.46\linewidth}
+\begin{block}{\rmfamily{Validation du modèle RLM}}
+\begin{itemize}
+	\item \rmfamily{Normalité des erreurs}
+	\item \rmfamily{Autocorrélation des erreurs}
+	\item \rmfamily{Hétéroscédasticité}
+	\item \rmfamily{Facteur d'inflation de la variance}
+\end{itemize}
+\end{block}
+\end{minipage}\hfill
+\begin{minipage}{.46\linewidth}
+\begin{block}{\rmfamily{Qualité du modèle}}
+	\begin{itemize}
+		\item \rmfamily{le taux d'erreur;}
+		
+		\item \rmfamily{la courbe ROC;}
+		
+	\end{itemize}
+\end{block}
+\end{minipage}\hfill
+\end{frame}
+
+\section{\rmfamily{Résultats et discussions}}
+\begin{frame}{\rmfamily{Résultats et discussions (1/9)}}
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.7
+ \linewidth]{matrice de corr}
+ \caption{Matrice de corrélation}
+\end{figure}
+
+\end{frame}
+
+
+
+\begin{frame}{\rmfamily{Résultats et discussions (2/9)}}
+\begin{block}{}
+\rmfamily{Comme annoncé dans la méthodologie, nous avons choisi les variables à partir d'une matrice de corrélation mais également en automatisant une régression pas à pas nous permettant d'obtenir le modèle RLM avec l'AIC le plus petit. Le modèle suivant est celui retenu après estimations:}
+
+\begin{center}
+\begin{equation}
+ 
+ Modèle A :   $\widehat{PE}$ =  -3.536 + 0.013.Age + 0.071.PDC +  2.78.FGP +1.94.3PP + 0.85.FTP + 0.02.DRB + 0.01.STL 
+    
+\label{moneq1}
+\end{equation}
+\end{center}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{\rmfamily{Résultats et discussions (3/9)}}
+\renewcommand{\arraystretch}{1.3}
+\tiny
+\begin{center}
+\begin{small}
+\begin{longtable}{p{2cm}p{5.5cm}cc}
+\caption{Résultats de l'estimation du modèle}
+\label{fhf} \\
+\hline
+\multirow{1}{*}{\textbf{Variables}} & 
+\multirow{1}{*}{\textbf{Coefficients}} & 
+\multicolumn{1}{c}{\textbf{\textit{\textit{\textit{\textit{\textit{\textit{p-value}}}}}}}}\\
+\endfirsthead
+\hline
+\multirow{1}{*}{\textbf{Variables}} & 
+\multirow{1}{*}{\textbf{Coefficients}} & 
+\multicolumn{1}{c}{\textbf{\textit{\textit{\textit{\textit{p-value}}}}}}\\
+\endhead
+\hline
+\multirow{1}{*}{} & -3.536 & 8e-05   \\
+\hline
+\multirow{1}{*}{Age} & 0.01281  & 0.2753   \\
+\hline
+\multirow{1}{*}{PDC} & 0.07133 & 0.6920   \\
+\hline
+\multirow{1}{*}{FGP} & 2.78508 & 0.0224  \\
+\hline
+\multirow{1}{*}{3PP} & 1.94706  & 0.1268   \\
+\hline
+\multirow{1}{*}{FTP} & 0.85301  & 0.2473    \\
+\hline
+\multirow{1}{*}{DRB} & 0.02626  & 0.0339  \\
+\hline
+\multirow{1}{*}{STL} & 0.01218  & 0.5307 \\ 
+\hline
+\end{longtable}
+\end{small}
+\end{center}
+\end{frame}
+
+\begin{frame}{\rmfamily{Résultats et discussions  (4/9)}}
+\begin{table}[h]
+\centering
+\caption{\rmfamily{Validation du modèle de régression linéaire multiple}}
+\label{pert}
+\begin{tabular}{ll}
+\hline 
+	\textbf{\rmfamily{Tests}} & \textbf{\rmfamily{Critère de significativité}}\\
+\hline 
+\rmfamily{Normalité des erreurs} & \rmfamily{\textit{p-value}=0.2038}\\
+\rmfamily{Hétéroscédasticité} & \rmfamily{\textit{p-value}=0.44002}\\
+\rmfamily{Autocorrélation} & \rmfamily{\textit{p-value}=0.4688} \\
+\rmfamily{Validation Globale} & \rmfamily{\textit{p-value}=0.3177} \\
+\hline 
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+\begin{frame}{\rmfamily{Résultats et discussions (5/9)}}
+\begin{block}{}
+\rmfamily{Nous avons procédé à deux estimations pour donner la meilleure prédiction que possible sur la victoire des équipes lors d’un match. Après avoir effectué une régression pas à pas, nous avons réalisé une matrice de corrélation et retiré les variables qui présentait une forte liaison entre elles. Le modèle 1 estimé est un logit et le modèle 2 un probit.:}
+\begin{table}[h]
+\centering
+\caption{Résultats des tests du choix de modèle}
+\label{chxmd}
+\begin{tabular}{l|ll}
+\hline
+         & \textbf{Resid.} \textbf{Dev} & \textbf{AIC}    \\ \hline
+Modèle logit & 161.53     & 173.53 \\
+Modèle probit & 162.70     & 174.7 \\ \hline
+\end{tabular}
+\begin{center}
+\underline{\textbf{Source}}\textit{: Auteur, 2022.}
+\end{center}
+\end{table}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{\rmfamily{Résultats et discussions (6/9)}}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width = 1
+ \linewidth]{estim logit}
+ \caption{Estimation du logit}
+\end{figure}
+\end{frame}
+
+\begin{frame}{\rmfamily{Résultats et discussions (7/9)}}
+\begin{table}[h]
+\centering
+\caption{Résultat de la pertinence du modèle}
+\label{pert}
+\begin{tabular}{ll}
+\hline
+	\textbf{Tests} & \textbf{Critère de significativité}\\
+\hline
+Règle de pouce & D/v = 0.5032021\\
+Test de Hosmer-Lemeshow & Pr(Chi2)= 0.976\\
+Test de résidus de Pearson & Pr(Chi2)=0.7167697 \\
+Test de résidus de la déviance & Pr(Chi2)= 1\\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\caption{Qualité du modèle}
+\label{qm}
+\centering
+\begin{tabular}{ll}
+\hline
+	\textbf{Tests} & \textbf{Valeurs}\\
+\hline
+Taux d'erreur & 0,1\\
+Aire sous la courbe ROC & 0.9621\\
+\hline
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+\begin{frame}{\rmfamily{Résultats et discussions (8/9)}}
+\begin{block}{}
+Après entrainement du modèle logit, il fut testé sur 100 matchs et obtint les résultats suivants:
+\begin{equation}
+ $\widehat{p(ISSUE)}$ = logit^{-1} ( 0.25 DFGA + 0.21 D3PP + 0.27 DFTM + 0.37 DBLK + 0.30 DDREB )
+\label{moneq3}
+\end{equation}
+\end{block}
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.5
+ \linewidth]{mdc}
+ \caption{Matrice de confusion}
+\end{figure}
+
+
+\end{frame}
+
+\begin{frame}{\rmfamily{Résultats et discussions (9/9)}}		
+	\begin{block}{}
+			\rmfamily{\textbf{L'hypothèse 1} selon laquelle "la performance du coach", l'âge moyen des joueurs et le pourcentage de tirs accordés expliquent la performance d'une équipe sur 72 matchs est \textcolor{red}{confirmée}.}
+	\end{block}
+		
+	\vspace*{1cm}
+
+	\begin{block}{}
+			\rmfamily{\textbf{L'hypothèse 2} selon laquelle "le pourcentage de 3 points accordés, de lancés francs, et le nombre de rebonds défensifs influencent l'issue d'un match est \textcolor{red}{confirmée}.}
+	\end{block}
+	
+\end{frame}
+
+
+\section{\rmfamily{Préconisations opérationnelles}}
+\begin{frame}{\rmfamily{Préconisations opérationnelles}}
+
+	\setbeamertemplate{itemize item}{\color{blue} $\clubsuit$}
+    	\begin{block}{\textbf{\textit{\rmfamily{A l'endroit des clubs professionnels }}}}
+    	\begin{itemize}
+    	
+
+\item \rmfamily{Relever dans un premier temps les différentes statistiques personnelles des joueurs ;}
+
+\item \rmfamily{Tenir des feuilles de statistiques régulièrement et compiler de manière informatisée les données des matchs;}
+
+\item \rmfamily{Uiliser le modèle A généré pour mieux observer les performances et se catégoriser de ce
+fait ;}
+
+\item \rmfamily{Organiser des compétitions en vue de détecter de potentiels joueurs qui pourront être utiles ;}
+
+\item \rmfamily{Faire des matchs d’entrainement avec plusieurs équipes et récolter les données relatives à ces
+équipes ;}
+
+\item \rmfamily{Utiliser le modèle de prévision généré pour simuler mathématiquement les matchs et ainsi mieux se préparer pour les matchs.}
+
+	\end{itemize}
+    	\end{block}
+
+\end{frame}
+
+
+\begin{frame}
+	\vspace*{1cm}
+\begin{block}{}
+\begin{center}
+		\vspace*{0.1cm}
+			\LARGE \rmfamily{\textbf{\textit{Merci de votre attention}}}
+			\vspace*{0.2cm}
+\end{center}
+\end{block}
+\end{frame}
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+

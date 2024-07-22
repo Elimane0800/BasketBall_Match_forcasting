@@ -1,0 +1,11 @@
+Bonjour Monsieur, j'espère que vous vous portez bien.
+Je mets cette note d'information car vous n'allez probablement pas trouver la totalité des fichiers générés par mes codex latex et beamer.
+Cela est dû au faite que je n'ai pas travaillé sur un latex local mais plutôt sur un latex en ligne.
+Cela m'a été avantageux en ce sens que je n'ai pas eu besoin d'installer les packages.
+
+La raison de ce choix est que en raison de la version de mon windows , j'ai eu des problèmes de compilations avec tous les latex que j'ai utilisés :
+texmaker et texworks. J'ai donc dû trouver une solution d'urgence telle que décrite plus haut en travaillant en ligne sur overleaf.
+
+Bien à vous.
+
+Yassine.
